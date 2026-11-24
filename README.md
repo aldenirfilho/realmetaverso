@@ -4,13 +4,22 @@ Publicações abertas do Realmetaverso, universo de ficção, filosofia e worldb
 
 🌐 **Site:** https://aldenirfilho.github.io/realmetaverso/
 
+📖 **Códice Vivo ilustrado:** https://aldenirfilho.github.io/realmetaverso/codice/
+
 ## 📚 Publicações
 
 | Edição | Data | Ato | Ler |
 |---|---|---|---|
 | nº 019 | 23/11/2026 | Ato nº 49 · Do Oráculo Digital | [Página](https://aldenirfilho.github.io/realmetaverso/) · [PDF, 5 páginas](pdf/Diario_Oficial_Realmetaverso_n019_Ato_49_Do_Oraculo_Digital_2026-11-23_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
 
-As edições nº 001 a 018, com os Atos nº 1 a 48, estão no Códice Vivo do Realmetaverso, o acervo do autor.
+As edições nº 001 a 018, com os Atos nº 1 a 48, estão no [Códice Vivo do Realmetaverso](https://aldenirfilho.github.io/realmetaverso/codice/), o acervo do autor, aberto a todos desde 23/11/2026.
+
+## 📖 Códice Vivo ilustrado
+
+A pasta [`codice/`](codice/) traz o Códice Vivo inteiro: incisos, axiomas, leis, Diários Oficiais, política e sociedade, polêmicas, mapa vivo e a edição ilustrada com quatro artes originais.
+
+- Os links com 🔒 abrem fichas do autor no Notion, no Drive ou em artefatos Claude: são privadas e pedem acesso.
+- A fonte do site, os testes e a auditoria ficam num repositório privado do autor; esta pasta recebe só os arquivos publicados.
 
 ## ⚜️ Créditos
 
