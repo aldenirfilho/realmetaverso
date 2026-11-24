@@ -1,0 +1,188 @@
+/* Realmetaverso · Códice Vivo Ilustrado · folha de estilo da camada visual · versão 2.0 (23/11/2026)
+   ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X
+
+   Ideia: iluminura de códice. A arte aparece onde um manuscrito a poria: uma prancha de abertura,
+   selos nos percursos, um friso fino no alto de cada capítulo e a galeria de pranchas. O resto é
+   texto calmo, em fios de ouro. Usa as cores, as fontes e as duas peles (obsidiana e pergaminho)
+   do Códice Vivo: nenhuma cor de texto é fixada aqui.
+
+   Tudo o que mexe em peças do códice vive sob .rv-on, classe que o módulo só põe quando entra
+   inteiro. A primeira regra abaixo é o sinal de que esta folha carregou. */
+:root{--rv-css:1}
+
+/* ── moldura da página ── */
+.rv-skip{position:fixed;left:16px;top:-100px;z-index:90;background:var(--ouro2);color:var(--fundo);padding:10px 18px;border-radius:8px}
+.rv-skip:focus{top:12px}
+.rv-progress{position:fixed;left:var(--lomb);top:0;width:calc(100% - var(--lomb));height:2px;background:var(--ciano);transform:scaleX(0);transform-origin:left;z-index:45;pointer-events:none}
+.rv-nav-sep{display:block;flex:none;height:1px;background:var(--linha2);margin:8px 10px}
+.rv-framed .rv-fora{display:none!important}
+/* o foco levado por script a um trecho (ou ao conteúdo) não desenha contorno: o destaque já vem do brilho do códice */
+.rv-on main:focus,.rv-on .view [tabindex="-1"]:focus{outline:none}
+
+/* ── capa: prancha de abertura, brasão como selo, título e inventário ── */
+.rv-on .capa{display:block;text-align:center;padding:2px 0 0;border-bottom:0}
+.rv-frontis{margin:6px 6px 0}
+.rv-frontis img{display:block;width:100%;height:auto;aspect-ratio:2.9/1;object-fit:cover;object-position:50% 24%;background:var(--painel);border:1px solid var(--ouro);border-radius:3px;outline:1px solid var(--linha);outline-offset:5px}
+.rv-frontis figcaption{margin:13px 0 0;text-align:left;font-size:.74rem;line-height:1.3;color:var(--tinta2)}
+.rv-on .capa .brasao{width:86px;max-width:none;margin:-92px auto 6px;position:relative}
+.rv-on .capa .brasao svg{filter:drop-shadow(0 6px 16px rgba(0,0,0,.55))}
+.rv-on .capa .sup{margin:0 0 4px;font-size:.88rem;color:var(--ciano)}
+.rv-on .capa h1{font-size:clamp(2.1rem,5.4vw,3.9rem);letter-spacing:.1em;padding-left:.1em}
+.rv-on .capa .sub{margin:14px auto 0;max-width:62ch;font-size:1.04rem;text-wrap:balance}
+.rv-on .capa .autor{margin:10px auto 0;max-width:66ch;font-size:.9rem;text-wrap:balance}
+.rv-on .capa .conta{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:1px;margin:26px 0 0;background:var(--linha2);border-block:1px solid var(--linha)}
+.rv-on .capa .conta a{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:13px 6px 12px;border:0;border-radius:0;background:var(--fundo);text-align:center}
+.rv-on .capa .conta a:hover{background:var(--painel)}
+.rv-on .capa .conta a:focus-visible{z-index:1;outline-offset:-2px}
+.rv-on .capa .conta .n{font-size:1.5rem;line-height:1.1}
+.rv-on .capa .conta .r{font-size:.76rem;line-height:1.25}
+.rv-quick{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 0}
+.rv-quick .btn{padding:9px 18px;text-decoration:none}
+.rv-quick .rv-primario{background:var(--ouro);border-color:var(--ouro);color:var(--fundo);font-weight:700}
+.rv-quick .rv-primario:hover{background:var(--ouro2);border-color:var(--ouro2);color:var(--fundo)}
+.rv-resume{margin:16px 0 0;text-align:center;font-size:.92rem;color:var(--tinta2)}
+.rv-resume small{display:block;margin-top:2px;font-size:.78rem}
+
+/* ── percursos de leitura: selo da arte, título e três passos ── */
+.rv-percursos{margin:32px 0 0;scroll-margin-top:76px}
+.rv-percursos h2,.rv-gallery h2{font-size:1.5rem;color:var(--ouro2)}
+.rv-lede{margin:6px 0 0;max-width:76ch;color:var(--tinta2)}
+.rv-trails{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:18px 0 0;border-block:1px solid var(--linha2)}
+.rv-trail{padding:22px 20px 22px 0}
+.rv-trail+.rv-trail{padding-left:22px;border-left:1px solid var(--linha2)}
+.rv-selo{display:block;width:60px;height:60px;margin:3px 0 15px 3px;border-radius:50%;object-fit:cover;border:1px solid var(--ouro);outline:1px solid var(--linha);outline-offset:3px}
+.rv-trail h3{font-size:1.02rem;line-height:1.25;color:var(--ouro2)}
+.rv-trail p{margin:6px 0 10px;font-size:.9rem;line-height:1.5;color:var(--tinta2)}
+.rv-trail ol{margin:0;padding-left:1.3em;font-size:.93rem}
+.rv-trail li{padding:3px 0 3px 2px}
+.rv-trail li::marker{color:var(--ouro);font-family:var(--f-display);font-size:.86em}
+
+/* ── galeria: quatro pranchas emolduradas ── */
+.rv-gallery{margin:46px 0 0;scroll-margin-top:76px}
+.rv-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 34px;margin:22px 6px 0}
+.rv-gallery figure{margin:0}
+.rv-gallery button{display:block;width:100%;padding:0;cursor:zoom-in;background:var(--painel);border:1px solid var(--ouro);border-radius:3px;outline:1px solid var(--linha);outline-offset:5px;overflow:hidden}
+.rv-gallery button:focus-visible{outline:2px solid var(--ciano);outline-offset:5px}
+.rv-gallery img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.rv-gallery button:hover img{filter:brightness(1.1)}
+.rv-gallery figcaption{padding:16px 0 0}
+.rv-gallery h3{font-size:1.04rem;color:var(--ouro2)}
+.rv-num{display:inline-block;min-width:1.9em;color:var(--ouro);font-size:.92em}
+.rv-gallery figcaption p{margin:5px 0 7px;font-size:.9rem;color:var(--tinta2)}
+.rv-gallery figcaption a{font-size:.9rem}
+.rv-lightbox{max-width:min(96vw,1320px);max-height:94vh;padding:16px;border:1px solid var(--linha);border-radius:6px;background:var(--fundo);color:var(--tinta)}
+.rv-lightbox::backdrop{background:rgba(4,6,12,.9)}
+.rv-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:0 0 12px}
+.rv-lightbox h2{font-size:1.1rem;color:var(--ouro2)}
+.rv-lightbox img{display:block;max-width:100%;max-height:74vh;margin:0 auto;object-fit:contain;border-radius:2px}
+.rv-lightbox p{margin:10px 0 0;font-size:.86rem;color:var(--tinta2)}
+
+/* ── publicações desta edição ── */
+.rv-pubs{margin:44px 0 0;padding:18px 0 0;border-top:1px solid var(--linha)}
+.rv-pubs>h3{font-size:1.15rem;color:var(--ouro2)}
+.rv-pubs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 40px;margin:8px 0 0}
+.rv-pubs h4{font-family:var(--f-corpo);font-size:.82rem;font-weight:700;color:var(--ciano);margin:8px 0 0}
+.rv-pubs article p{margin:4px 0 0;font-size:.93rem}
+.rv-links{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:.9rem}
+.rv-pubs .rv-links{margin-top:8px}
+
+/* ── alto de cada seção: friso da arte, trilha, copiar link, sumário ── */
+.rv-friso{height:78px;margin:0 0 10px;overflow:hidden;border-block:1px solid var(--linha);border-radius:2px;background:var(--painel)}
+.rv-friso img{display:block;width:100%;height:100%;object-fit:cover}
+.rv-barra{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 14px;min-height:34px;margin:0 0 2px;font-size:.86rem}
+.rv-path{display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:var(--tinta2)}
+.rv-path a{text-decoration:none}
+.rv-path a:hover{text-decoration:underline}
+.rv-path [aria-current]{color:var(--tinta)}
+.rv-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-left:auto}
+.rv-copiar{padding:6px 0;background:none;border:0;cursor:pointer;color:var(--ciano);font-size:inherit;text-decoration:underline;text-underline-offset:3px}
+.rv-copiar:hover{color:var(--ouro2)}
+.rv-status{color:var(--tinta2)}
+.rv-status input{width:min(56vw,360px);padding:4px 8px;font-size:.84rem;background:var(--painel);border:1px solid var(--linha);border-radius:6px}
+.rv-on .cab{margin-top:2px}
+.rv-outline{margin:-6px 0 22px;padding:0 0 10px;border-bottom:1px solid var(--linha2)}
+.rv-outline summary{padding:6px 0;cursor:pointer;font-size:.92rem;color:var(--ouro2)}
+.rv-outline ul{columns:2 270px;column-gap:30px;list-style:none;margin:6px 0 4px;padding:0}
+.rv-outline li{break-inside:avoid;padding:3px 0;font-size:.9rem}
+
+/* ── conexões de um trecho e seções relacionadas ── */
+.rv-linked{max-width:78ch;margin:12px 0 14px;padding:2px 0 2px 12px;border-left:2px solid var(--linha);font-size:.86rem}
+.rv-linked summary{cursor:pointer;color:var(--ciano)}
+.rv-linked p{margin:6px 0;color:var(--tinta2)}
+.rv-linked ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:5px 26px;list-style:none;margin:6px 0 4px;padding:0}
+.rv-linked small{color:var(--tinta2);font-size:.9em}
+.rv-related{margin:40px 0 0;padding:18px 0 0;border-top:1px solid var(--linha)}
+.rv-related h3{font-size:1.15rem;color:var(--ouro2)}
+.rv-related p{margin:4px 0 0;font-size:.88rem;color:var(--tinta2)}
+.rv-related nav{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.rv-related a{padding:7px 12px;border:1px solid var(--linha2);border-radius:8px;color:var(--tinta);font-size:.9rem;text-decoration:none}
+.rv-related a:hover{border-color:var(--ouro);color:var(--ouro2)}
+.rv-veja{margin:12px 0 0;font-size:.92rem}
+.rv-credito{margin:10px 0 0}
+
+/* ── manifesto RM-ET-001 lido dentro do códice (o texto vem da página da publicação) ── */
+.rv-manifesto{max-width:880px}
+.rv-manifesto .meta{margin:0 0 14px;font-size:.86rem;color:var(--tinta2)}
+.rv-manifesto figure{margin:6px 6px 0}
+.rv-manifesto figure img{display:block;width:100%;height:auto;aspect-ratio:2.5/1;object-fit:cover;object-position:50% 44%;background:var(--painel);border:1px solid var(--ouro);border-radius:3px;outline:1px solid var(--linha);outline-offset:5px}
+.rv-manifesto figcaption{margin:13px 0 0;font-size:.74rem;color:var(--tinta2)}
+.rv-manifesto h2{margin:34px 0 12px;padding:16px 0 0;border-top:1px solid var(--linha2);font-size:1.3rem;color:var(--ouro2)}
+.rv-manifesto blockquote{margin:0 0 16px;padding:4px 0 4px 20px;border-left:3px solid var(--ouro);font-family:var(--f-display);font-size:clamp(1.2rem,2.6vw,1.65rem);line-height:1.4;color:var(--ouro2)}
+.rv-manifesto p{max-width:74ch;margin:10px 0}
+.rv-manifesto .values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.rv-manifesto .values article{display:grid;grid-template-columns:2.3em 1fr;gap:0 8px;align-items:baseline;padding:14px 0;border-top:1px solid var(--linha2)}
+.rv-manifesto .number{font-family:var(--f-display);font-size:1rem;color:var(--ouro)}
+.rv-manifesto .values h3,.rv-manifesto .role h3{font-family:var(--f-corpo);font-size:1rem;color:var(--tinta)}
+.rv-manifesto .values p{margin:4px 0 0;font-size:.93rem;color:var(--tinta2)}
+.rv-manifesto .role{padding:12px 0;border-top:1px solid var(--linha2)}
+.rv-manifesto .role p{margin:4px 0 0}
+.rv-manifesto .prayer{margin:26px 0 8px;padding:16px 22px;border-left:3px solid var(--ouro);background:var(--painel)}
+.rv-manifesto .prayer p:first-child{margin:0;font-family:var(--f-display);font-size:1.25rem;color:var(--ouro2)}
+.rv-manifesto .small{font-size:.86rem;color:var(--tinta2)}
+.rv-manifesto .connections{display:flex;flex-wrap:wrap;gap:6px 24px}
+.rv-norma{max-width:880px;margin:28px 0 0;padding:14px 18px 16px;border:1px solid var(--linha);border-radius:10px;background:var(--painel)}
+.rv-norma h3{font-family:var(--f-corpo);font-size:.95rem;color:var(--ouro2)}
+.rv-norma p{margin:6px 0 0;font-size:.95rem}
+.rv-acoes{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.rv-acoes .btn{text-decoration:none}
+
+/* ── mapa vivo: foco visível pelo teclado ── */
+.mapa-svg .no:focus-visible,.mapa-svg .centro:focus-visible{outline:none}
+.mapa-svg .no:focus-visible .pt{stroke:var(--ciano);stroke-width:4}
+.mapa-svg .centro:focus-visible circle{stroke:var(--ciano);stroke-width:4}
+
+/* ── telas médias e pequenas ── */
+@media (max-width:1240px){
+  .rv-on .capa .conta{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rv-trails{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rv-trail:nth-child(odd){padding-left:0;border-left:0}
+  .rv-trail:nth-child(n+3){border-top:1px solid var(--linha2)}
+}
+@media (max-width:700px){
+  .rv-frontis img{aspect-ratio:16/10;object-position:62% 30%}
+  .rv-frontis figcaption{text-align:center}
+  .rv-on .capa .brasao{width:70px;margin:10px auto 4px}
+  .rv-on .capa h1{letter-spacing:.06em;padding-left:.06em}
+  .rv-on .capa .sub{font-size:1rem}
+  .rv-quick .btn{flex:1 1 0;text-align:center;padding:11px 14px}
+  .rv-quick .rv-primario{flex-basis:100%}
+  .rv-trails{grid-template-columns:1fr}
+  .rv-trail,.rv-trail+.rv-trail{display:grid;grid-template-columns:auto 1fr;gap:0 16px;padding:18px 0;border-left:0}
+  .rv-trail+.rv-trail{border-top:1px solid var(--linha2)}
+  .rv-selo{width:52px;height:52px;margin:5px 0 0 3px}
+  .rv-gallery-grid{grid-template-columns:1fr;gap:30px}
+  .rv-pubs-grid,.rv-manifesto .values{grid-template-columns:1fr}
+  .rv-friso{height:60px}
+  .rv-copiar{padding:11px 0}
+  .rv-outline ul{columns:1}
+  .rv-lightbox{padding:10px}
+  .lomb-nav a{min-height:44px}
+}
+
+/* ── impressão ── */
+@media print{
+  .rv-skip,.rv-progress,.rv-quick,.rv-resume,.rv-barra,.rv-outline,.rv-lightbox,.rv-acoes,.rv-nav-sep{display:none!important}
+  .rv-frontis img,.rv-friso img,.rv-gallery img,.rv-manifesto figure img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rv-gallery img{max-height:220px}
+  .rv-linked,.rv-gallery figure,.rv-manifesto .values article{break-inside:avoid}
+}
