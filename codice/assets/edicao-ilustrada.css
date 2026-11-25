@@ -1,4 +1,4 @@
-/* Realmetaverso · Códice Vivo Ilustrado · folha de estilo da camada visual · versão 2.1 (25/11/2026)
+/* Realmetaverso · Códice Vivo Ilustrado · folha de estilo da camada visual · versão 2.2 (25/11/2026)
    ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X
 
    Ideia: iluminura de códice. A arte aparece onde um manuscrito a poria: uma prancha de abertura,
@@ -43,11 +43,11 @@
 .rv-resume{margin:16px 0 0;text-align:center;font-size:.92rem;color:var(--tinta2)}
 .rv-resume small{display:block;margin-top:2px;font-size:.78rem}
 
-/* ── percursos de leitura: selo da arte, título e três passos ── */
+/* ── percursos de leitura (cinco): selo da arte, título e três passos ── */
 .rv-percursos{margin:32px 0 0;scroll-margin-top:76px}
 .rv-percursos h2,.rv-gallery h2{font-size:1.5rem;color:var(--ouro2)}
 .rv-lede{margin:6px 0 0;max-width:76ch;color:var(--tinta2)}
-.rv-trails{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:18px 0 0;border-block:1px solid var(--linha2)}
+.rv-trails{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:18px 0 0;border-block:1px solid var(--linha2)}
 .rv-trail{padding:22px 20px 22px 0}
 .rv-trail+.rv-trail{padding-left:22px;border-left:1px solid var(--linha2)}
 .rv-selo{display:block;width:60px;height:60px;margin:3px 0 15px 3px;border-radius:50%;object-fit:cover;border:1px solid var(--ouro);outline:1px solid var(--linha);outline-offset:3px}

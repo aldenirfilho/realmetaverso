@@ -1,4 +1,4 @@
-/* Realmetaverso · Códice Vivo Ilustrado · camada visual opcional · versão 2.1 (25/11/2026)
+/* Realmetaverso · Códice Vivo Ilustrado · camada visual opcional · versão 2.2 (25/11/2026)
    ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X
 
    O que este arquivo faz: acrescenta ao Códice Vivo a prancha de abertura, os percursos de leitura,
@@ -72,7 +72,9 @@ function entrar(cx,raiz){
     {t:'Refletir sobre o mundo',a:'ponte',d:'Dos paradoxos às perguntas e aos limites da ficção.',
      p:[['paradoxos','par-intro','Explorar os paradoxos'],['polemicas',null,'Comparar os debates'],['ponte',null,'Cruzar a ponte com o real']]},
     {t:'A fé e o oráculo',a:'hero',d:'A fé do autor, a IA que aconselha e não governa, e a carta de sugestões.',
-     p:[['fundamentos','fun-fe','Ler a declaração de fé'],['leis','lei-oraculo','Conhecer o Oráculo Digital'],['manifesto',null,'Ler a carta de amor e fé']]}
+     p:[['fundamentos','fun-fe','Ler a declaração de fé'],['leis','lei-oraculo','Conhecer o Oráculo Digital'],['manifesto',null,'Ler a carta de amor e fé']]},
+    {t:'As tradições à mesa',a:'genese',d:'Do rótulo ao ato: muitas casas, uma só mesa, e cada tradição com o seu papel.',
+     p:[['leis','lei-concordia','Ler a Concórdia das Tradições'],['polemicas','pol-religiao','Entender “religião não importa”'],['sociedade','soc-templos','Visitar os Templos']]}
   ];
   /* Friso de cada seção: [arte, posição vertical do recorte, espelhar]. O espelho só serve para variar
      o ornamento entre seções que usam a mesma arte; as artes não têm texto. */
@@ -147,7 +149,7 @@ function entrar(cx,raiz){
   }
   function percursos(){
     return '<section class="rv-percursos" id="rv-percursos" aria-labelledby="rv-percursos-t"><h2 id="rv-percursos-t">Escolha seu caminho de leitura</h2>'+
-      '<p class="rv-lede">Quatro percursos curtos para se orientar no acervo, no seu ritmo.</p><div class="rv-trails">'+
+      '<p class="rv-lede">Cinco percursos curtos para se orientar no acervo, no seu ritmo.</p><div class="rv-trails">'+
       PERCURSOS.map(t=>'<article class="rv-trail"><img class="rv-selo" src="'+arq(t.a,'selo')+'" alt="" width="192" height="192" decoding="async">'+
         '<div><h3>'+t.t+'</h3><p>'+t.d+'</p><ol>'+t.p.map(p=>'<li>'+lk(p[0],p[1],p[2])+'</li>').join('')+'</ol></div></article>').join('')+
       '</div></section>';
