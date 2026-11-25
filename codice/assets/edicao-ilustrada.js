@@ -1,12 +1,15 @@
-/* Realmetaverso · Códice Vivo Ilustrado · camada visual opcional · versão 2.2 (25/11/2026)
+/* Realmetaverso · Códice Vivo Ilustrado · camada visual opcional · versão 2.3 (25/11/2026)
    ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X
 
    O que este arquivo faz: acrescenta ao Códice Vivo a prancha de abertura, os percursos de leitura,
    a galeria ampliável, os frisos das seções, o sumário e as conexões de cada capítulo, a retomada
-   da leitura, o "copiar link" e a leitura do Manifesto RM-ET-001 dentro do próprio códice.
+   da leitura, o "copiar link", a leitura do Manifesto RM-ET-001 dentro do próprio códice e a Mesa
+   das Mensagens, que lê do blog Mensagens que Importam a folha do dia e as últimas mensagens.
 
    O que ele não faz: não toca em nenhuma norma, lei, axioma ou contador. Os dados do cânone ficam
    no index.html. Se este arquivo ou a folha de estilo faltarem, o códice segue inteiro no modo texto.
+   O que vem do blog entra sempre como texto, nunca como código, e só é buscado quando o leitor abre
+   a Mesa (no aplicativo instalado, uma vez por dia).
 
    Como entra: o index.html chama window.CodiceIlustrado(contexto) uma vez, antes de abrir a primeira
    seção, e recebe de volta { aoAbrir(secao, trecho) }.
@@ -28,11 +31,11 @@ window.CodiceIlustrado=function(cx){
   try{return entrar(cx,raiz);}
   catch(e){
     cx.R.inicio=antes.inicio;cx.AFTER.inicio=antes.apos;g.view=antes.view;g.focusEl=antes.foco;g.applyMap=antes.mapa;
-    delete cx.R.manifesto;delete cx.AFTER.manifesto;delete cx.SEC.manifesto;
+    delete cx.R.manifesto;delete cx.AFTER.manifesto;delete cx.SEC.manifesto;delete cx.R.mesa;delete cx.SEC.mesa;
     raiz.classList.remove('rv-on','rv-framed');
     if(sub)sub.textContent=subTexto;
     cx.main.removeAttribute('tabindex');
-    document.querySelectorAll('.rv-skip,.rv-progress,.rv-lightbox,.rv-nav-sep,#nav a[data-go="manifesto"],#nav a[data-el="rv-galeria"]').forEach(x=>x.remove());
+    document.querySelectorAll('.rv-skip,.rv-progress,.rv-lightbox,.rv-nav-sep,#nav a[data-go="manifesto"],#nav a[data-go="mesa"],#nav a[data-el="rv-galeria"]').forEach(x=>x.remove());
     throw e;
   }
 };
@@ -80,7 +83,7 @@ function entrar(cx,raiz){
   /* Friso de cada seção: [arte, posição vertical do recorte, espelhar]. O espelho só serve para variar
      o ornamento entre seções que usam a mesma arte; as artes não têm texto. */
   const FRISO={
-    genese:['genese','50%'],fundamentos:['genese','8%',1],axiomas:['genese','94%'],manifesto:['genese','30%',1],
+    genese:['genese','50%'],fundamentos:['genese','8%',1],axiomas:['genese','94%'],manifesto:['genese','30%',1],mesa:['ponte','18%',1],
     incisos:['biblioteca','4%'],codice:['biblioteca','96%'],leis:['biblioteca','38%',1],diario:['biblioteca','70%'],glossario:['biblioteca','20%',1],acervo:['biblioteca','86%',1],
     sociedade:['hero','22%'],saga:['hero','78%',1],caderno:['hero','2%',1],empresas:['hero','52%'],
     paradoxos:['ponte','88%'],polemicas:['ponte','66%',1],revisao:['ponte','100%',1],ponte:['ponte','40%']
@@ -180,12 +183,15 @@ function entrar(cx,raiz){
     const prancha='<figure class="rv-frontis"><img src="'+arq('hero','1200')+'" srcset="'+arq('hero','800')+' 800w, '+arq('hero','1200')+' 1200w, '+arq('hero','1672')+' 1672w" '+
       'sizes="(max-width:900px) calc(100vw - 32px), (max-width:1500px) calc(100vw - 336px), 1180px" alt="'+esc(A.alt)+'" width="1672" height="941" decoding="async" fetchpriority="high">'+
       '<figcaption>Prancha I. '+A.t+'. Arte gerada com IA.</figcaption></figure>';
+    /* o convite para instalar só aparece onde o aplicativo existe: quem decide é assets/aplicativo.js, pela classe app-on */
     const atalhos='<nav class="rv-quick" aria-label="Atalhos de leitura">'+lk('inicio','rv-percursos','Começar a leitura','btn rv-primario')+
-      lk('inicio','mapa-vivo','Explorar o mapa','btn')+lk('inicio','rv-galeria','Ver as pranchas','btn')+'</nav>';
+      lk('inicio','mapa-vivo','Explorar o mapa','btn')+lk('inicio','rv-galeria','Ver as pranchas','btn')+
+      lk('mesa',null,'<span aria-hidden="true">🪑</span> Mesa das Mensagens','btn')+
+      '<button type="button" class="btn rv-instalar" data-app-instalar><span aria-hidden="true">📲</span> Instalar aplicativo</button></nav>';
     /* funções no lugar de textos: um título guardado com "$" não é lido como padrão de troca */
     h=h.replace('<header class="capa">',()=>'<header class="capa">'+prancha);
     h=h.replace('<div class="conta">',()=>atalhos+'<div class="conta">');
-    h=h.replace('</header>',()=>'</header>'+retomar()+percursos());
+    h=h.replace('</header>',()=>'</header>'+retomar()+linhaMesa(mesaGuardada())+percursos());
     return h+galeria()+publicacoes('inicio');
   };
 
@@ -225,6 +231,146 @@ function entrar(cx,raiz){
     textoManifesto.then(h=>{c.innerHTML=h;ligar(c);},e=>{textoManifesto=null;aviso(e);c.innerHTML=SEM_TEXTO;});
   };
 
+  /* ───────── Mesa das Mensagens: o blog do autor, lido na hora (Ato nº 50, Art. 8º) ─────────
+     A Mesa não copia o blog para o códice: busca a página do blog quando o leitor abre a seção, tira dela
+     os dois blocos de dados (as folhas e o diário), guarda um resumo pequeno neste navegador e mostra a
+     folha do dia pela mesma regra do blog. Tudo o que vem de lá passa por esc(): é texto, nunca código. */
+  SEC.mesa={id:'mesa',e:'🪑',t:'Mesa das Mensagens',x:'A folha do dia e as últimas mensagens do blog Mensagens que Importam.'};
+  const PILARES={ideia:'A ideia',mensagem:'A mensagem',projecao:'A projeção',autocontrole:'O autocontrole',vida:'A vida',redencao:'A redenção'};
+  const MESA_CHAVE='rmv-mesa',MESA_FRESCA=15*60*1000,MESA_LIMITE=20000;
+  const texto=(v,max)=>String(v==null?'':v).replace(/\*\*|==/g,'').replace(/\s+/g,' ').trim().slice(0,max);
+  const doDia=iso=>new Date(+iso.slice(0,4),+iso.slice(5,7)-1,+iso.slice(8,10));
+  /* data de calendário de verdade: "2026-10-99" não passa */
+  const dataOk=s=>{if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s))return false;const d=doDia(s);return d.getMonth()+1===+s.slice(5,7)&&d.getDate()===+s.slice(8,10);};
+  const pilar=p=>Object.prototype.hasOwnProperty.call(PILARES,p)?PILARES[p]:(p||'livre');
+  const hojeIso=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
+  const diaMes=iso=>iso.slice(8,10)+'/'+iso.slice(5,7);
+  /* resumo guardado: {v, em, f:[folhas em ordem de data], d:[as cinco mensagens mais recentes]} */
+  function resumoDoBlog(folhas,diario){
+    const f=(Array.isArray(folhas)?folhas:[]).filter(e=>e&&Number.isInteger(e.n)&&e.n>0&&e.n<1000&&dataOk(e.data)&&e.titulo).slice(0,400)
+      .map(e=>({n:e.n,d:e.data,p:texto(e.pilar,24),e:texto(e.emoji,8),t:texto(e.titulo,160),g:texto(e.gancho,300),a:texto(e.acao,300),k:texto(e.ancora,200)}))
+      .sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:a.n-b.n);
+    if(!f.length)throw new Error('o blog veio sem folhas');
+    const d=(Array.isArray(diario)?diario:[]).filter(x=>x&&dataOk(x.d)&&x.ref).reverse()
+      .map(x=>({d:x.d,r:texto(x.ref,160),t:texto(x.tema,320),k:texto(x.ancora,200)})).sort((a,b)=>a.d<b.d?1:a.d>b.d?-1:0).slice(0,5);
+    return {v:1,em:Date.now(),f,d};
+  }
+  function mesaGuardada(){
+    try{const m=JSON.parse(localStorage.getItem(MESA_CHAVE)||'null');
+      if(m&&m.v===1&&typeof m.em==='number'&&Array.isArray(m.f)&&m.f.length&&Array.isArray(m.d)&&
+        m.f.every(e=>e&&Number.isInteger(e.n)&&dataOk(e.d)&&typeof e.t==='string')&&m.d.every(x=>x&&dataOk(x.d)))return m;}catch(e){}
+    return null;
+  }
+  /* a mesma regra do blog: a folha da data; antes da primeira, a primeira; depois da última, o ciclo recomeça */
+  function folhaDoDia(m,iso){
+    const o=m.f,exatas=o.filter(e=>e.d===iso);
+    if(exatas.length)return {e:exatas[exatas.length-1],releitura:false};
+    if(iso<o[0].d)return {e:o[0],releitura:false};
+    const dias=Math.round((doDia(iso)-doDia(o[0].d))/864e5);
+    return {e:o[((dias%o.length)+o.length)%o.length],releitura:true};
+  }
+  /* A capa nunca depende da Mesa: se o resumo guardado não servir, a linha simplesmente não aparece. */
+  function linhaMesa(m){
+    if(!m)return '';
+    try{
+      const e=folhaDoDia(m,hojeIso()).e;
+      return '<p class="rv-resume" id="rv-mesa-hoje">Na Mesa hoje: '+lk('mesa',null,(e.e?esc(e.e)+' ':'')+esc(e.t))+(e.k?' <small>'+esc(e.k)+'</small>':'')+'</p>';
+    }catch(erro){aviso(erro);return '';}
+  }
+  function linhaDaCapa(m){
+    const capa=document.querySelector('#v-inicio .capa');if(!capa||!m)return;
+    const ja=document.getElementById('rv-mesa-hoje');
+    if(ja)ja.outerHTML=linhaMesa(m);else(document.getElementById('rv-retomar')||capa).insertAdjacentHTML('afterend',linhaMesa(m));
+    const nova=document.getElementById('rv-mesa-hoje');if(nova)ligar(nova);
+  }
+  function folhaHtml(m){
+    const iso=hojeIso(),{e,releitura}=folhaDoDia(m,iso);
+    return '<article class="rv-mesa-folha" id="rv-mesa-folha" aria-labelledby="rv-mesa-folha-t">'+
+      '<p class="rv-mesa-rotulo">Folha de hoje, '+esc(doDia(iso).toLocaleDateString('pt-BR',{weekday:'long'}))+', '+diaMes(iso)+' · pilar: '+esc(pilar(e.p))+
+        ' · '+(releitura?'releitura do fólio ':'fólio ')+e.n+'</p>'+
+      '<h3 id="rv-mesa-folha-t">'+(e.e?'<span aria-hidden="true">'+esc(e.e)+'</span> ':'')+esc(e.t)+'</h3>'+
+      (e.g?'<p class="rv-mesa-gancho">'+esc(e.g)+'</p>':'')+
+      (e.a?'<p class="rv-mesa-acao"><b>Ação de hoje:</b> '+esc(e.a)+'</p>':'')+
+      (e.k?'<blockquote class="rv-mesa-ancora">'+esc(e.k)+'</blockquote>':'')+
+      '<p>'+fora(SITE_MENSAGENS+'#f'+e.n,'Ler a folha inteira no blog','btn rv-mesa-ler')+'</p></article>';
+  }
+  function diarioHtml(m){
+    if(!m.d.length)return '';
+    return '<section class="rv-mesa-diario" aria-labelledby="rv-mesa-diario-t"><h3 id="rv-mesa-diario-t">Últimas mensagens do diário</h3><ul id="rv-mesa-diario">'+
+      m.d.map(x=>'<li><time datetime="'+x.d+'">'+diaMes(x.d)+'</time><span><b>'+esc(x.r)+'</b>'+(x.t?' '+esc(x.t):'')+(x.k?' <q>'+esc(x.k)+'</q>':'')+'</span></li>').join('')+
+      '</ul><p>'+fora(SITE_MENSAGENS+'#diario','Ver o diário inteiro no blog')+'</p></section>';
+  }
+  function estadoHtml(estado,m){
+    const quando=m?new Date(m.em).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';
+    const fala={lendo:'Lendo o blog…','ao-vivo':'Lido do blog em '+quando+'.',
+      copia:'O blog não respondeu agora. Esta é a cópia guardada neste aparelho em '+quando+'.',
+      sem:'Não foi possível ler o blog agora, e ainda não há cópia guardada neste aparelho.'}[estado];
+    return '<p class="rv-mesa-estado" role="status" data-estado="'+estado+'">'+fala+
+      (estado==='lendo'?'':' <button type="button" class="rv-copiar" data-rv-mesa-ler>'+(estado==='ao-vivo'?'Atualizar':'Tentar de novo')+'</button>')+'</p>';
+  }
+  R.mesa=()=>'<div class="rv-mesa">'+estadoHtml('lendo')+'<div class="rv-mesa-corpo"></div></div>'+
+    '<aside class="rv-norma"><h3>Como a Mesa se liga ao cânone</h3><p>O blog Mensagens que Importam é do autor e foi reconhecido como <b>Mesa das Mensagens</b> pelo '+
+    lk('leis','lei-concordia','Ato nº 50 · Da Concórdia das Tradições')+' (Art. 8º), publicado no '+lk('diario','do-020','Diário Oficial nº 020')+
+    ': o lugar em que as vozes se sentam lado a lado. A Mesa mostra; não julga a fé de ninguém. O que aparece aqui é lido do blog na hora; os textos sagrados citados lá trazem a fonte, '+
+    'e as tradições citadas não endossam esta obra.</p></aside>'+
+    '<p class="rv-acoes">'+fora(SITE_MENSAGENS,'Abrir o blog','btn')+fora(SITE_MENSAGENS+'#diario','Diário de mensagens','btn')+fora(SITE_MENSAGENS+'#realmetaverso','O Realmetaverso no blog','btn')+'</p>';
+  function pintarMesa(estado,m){
+    const v=document.getElementById('v-mesa');if(!v)return;
+    const st=v.querySelector('.rv-mesa-estado'),corpo=v.querySelector('.rv-mesa-corpo'),comFoco=st.contains(document.activeElement);
+    const semFolha='<p class="rv-lede">A Mesa continua aberta no blog: '+fora(SITE_MENSAGENS,'Mensagens que Importam')+'.</p>';
+    let miolo='';
+    try{miolo=m?folhaHtml(m)+diarioHtml(m):'';}catch(erro){aviso(erro);m=null;if(estado!=='lendo')estado='sem';}
+    st.outerHTML=estadoHtml(estado,m);
+    corpo.innerHTML=miolo||(estado==='sem'?semFolha:'');
+    if(miolo)ligar(corpo);
+    const botao=v.querySelector('[data-rv-mesa-ler]');
+    if(comFoco&&botao)botao.focus();
+  }
+  /* Lê a página do blog só até achar os dois blocos de dados: eles vêm antes das imagens, que são o grosso do peso. */
+  async function lerBlog(){
+    const corte=new AbortController(),relogio=setTimeout(()=>corte.abort(),MESA_LIMITE);
+    try{
+      const r=await fetch(SITE_MENSAGENS,{credentials:'omit',signal:corte.signal});
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      let pagina='',folhas=null,diario=null;
+      const bloco=id=>{const m=new RegExp('<script\\b[^>]*\\bid=(["\'])'+id+'\\1[^>]*>').exec(pagina);if(!m)return null;
+        const a=m.index+m[0].length,b=pagina.indexOf('</script>',a);return b<0?null:pagina.slice(a,b);};
+      const achou=()=>{folhas=folhas||bloco('dados-codice');diario=diario||bloco('dados-diario');return !!(folhas&&diario);};
+      if(r.body&&r.body.getReader){
+        const leitor=r.body.getReader(),dec=new TextDecoder();
+        for(;;){
+          const {done,value}=await leitor.read();
+          if(value)pagina+=dec.decode(value,{stream:true});
+          if(achou()){leitor.cancel().catch(()=>{});break;}
+          if(done)break;
+        }
+      }else{pagina=await r.text();achou();}
+      if(!folhas)throw new Error('o blog mudou de formato');
+      return resumoDoBlog(JSON.parse(folhas),diario?JSON.parse(diario):[]);
+    }finally{clearTimeout(relogio);}
+  }
+  let mesaLendo=null;
+  function atualizarMesa(forcar){
+    const guardada=mesaGuardada();
+    const idade=guardada?Date.now()-guardada.em:-1;   /* idade negativa: relógio mexido; lê de novo */
+    if(!forcar&&idade>=0&&idade<MESA_FRESCA){pintarMesa('ao-vivo',guardada);return Promise.resolve(guardada);}
+    if(mesaLendo)return mesaLendo;
+    pintarMesa('lendo',guardada);
+    mesaLendo=lerBlog().then(m=>{try{localStorage.setItem(MESA_CHAVE,JSON.stringify(m));}catch(e){}pintarMesa('ao-vivo',m);linhaDaCapa(m);return m;},
+      ()=>{pintarMesa(guardada?'copia':'sem',guardada);return guardada;}).finally(()=>{mesaLendo=null;});
+    return mesaLendo;
+  }
+  /* No aplicativo instalado, a capa busca a folha do dia uma vez por dia, sem o leitor pedir; no navegador, só quando ele abre a Mesa. */
+  function mesaDoDia(){
+    try{
+      if(!raiz.classList.contains('rv-on')||!raiz.classList.contains('app-solo')||navigator.onLine===false||(navigator.connection&&navigator.connection.saveData))return;
+      const g=mesaGuardada();
+      if(g&&new Date(g.em).toDateString()===new Date().toDateString())return;
+      atualizarMesa(true);
+    }catch(e){aviso(e);}
+  }
+  if(document.readyState==='complete')setTimeout(mesaDoDia,900);else window.addEventListener('load',()=>setTimeout(mesaDoDia,900),{once:true});
+
   /* ───────── cada seção: friso, trilha, copiar link, sumário, conexões ───────── */
   function realcar(v,sec){
     if(v.dataset.rv)return;v.dataset.rv='1';
@@ -263,6 +409,8 @@ function entrar(cx,raiz){
   ganchos.view=function(sec){const v=vistaBase(sec);try{realcar(v,sec);}catch(e){aviso(e);}return v;};
 
   /* ───────── ir a um trecho: limpa filtro que o esconda e leva o foco do teclado junto ───────── */
+  /* Numa moldura (iframe) sem toque de quem lê, o navegador proíbe foco automático: aí só rola até o trecho. */
+  const emMolduraSemToque=()=>{let fora=true;try{fora=window.self!==window.top;}catch(e){}const ua=navigator.userActivation;return fora&&!(ua&&ua.hasBeenActive);};
   const focoBase=ganchos.focusEl;
   ganchos.focusEl=function(id){
     const el=document.getElementById(id);if(!el)return;
@@ -270,7 +418,7 @@ function entrar(cx,raiz){
       if(el.hidden){const v=el.closest('.view'),f=v&&v.querySelector('#ax-f,#gl-f');if(f){f.value='';f.dispatchEvent(new Event('input'));}el.hidden=false;}
     }catch(e){aviso(e);}
     focoBase(id);
-    try{if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','-1');el.focus({preventScroll:true});}catch(e){}
+    try{if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','-1');if(!emMolduraSemToque())el.focus({preventScroll:true});}catch(e){}
   };
 
   /* ───────── mapa vivo: pontos alcançáveis pelo teclado ───────── */
@@ -302,7 +450,8 @@ function entrar(cx,raiz){
   $('.rv-skip').addEventListener('click',e=>{e.preventDefault();main.focus({preventScroll:true});window.scrollTo(0,0);});
   $('#nav').insertAdjacentHTML('beforeend','<span class="rv-nav-sep" role="presentation"></span>'+
     lk('inicio','rv-galeria','<span class="em">🎨</span><span>Galeria ilustrada</span>')+
-    lk('manifesto',null,'<span class="em">🕊️</span><span>Amor com fé na humanidade</span>'));
+    lk('manifesto',null,'<span class="em">🕊️</span><span>Amor com fé na humanidade</span>')+
+    lk('mesa',null,'<span class="em">🪑</span><span>Mesa das Mensagens</span>'));
   const sub=$('.lomb-topo small');if(sub)sub.textContent=sub.textContent.replace('Códice Vivo ·','Códice Vivo ilustrado ·');
   document.body.insertAdjacentHTML('beforeend','<dialog class="rv-lightbox" aria-labelledby="rv-art-t"><div class="rv-dialog-head"><h2 id="rv-art-t"></h2>'+
     '<button class="btn" type="button" data-rv-close>Fechar</button></div><img alt=""><p></p></dialog>');
@@ -322,6 +471,7 @@ function entrar(cx,raiz){
       return;
     }
     if(e.target.closest('[data-rv-close]')){fecharJanela();return;}
+    if(e.target.closest('[data-rv-mesa-ler]')){atualizarMesa(true);return;}
     if(e.target===janela){const b=janela.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)fecharJanela();return;}
     const copiar=e.target.closest('[data-rv-copy]');
     if(copiar){
@@ -344,6 +494,7 @@ function entrar(cx,raiz){
   function aoAbrir(sec,trecho){
     $$('#nav a[data-el]').forEach(a=>a.removeAttribute('aria-current'));
     requestAnimationFrame(progresso);
+    if(sec==='mesa')atualizarMesa(false);
     if(sec==='inicio')return;
     ultimo={sec,id:trecho||null,title:T.get(sec+(trecho?'/'+trecho:''))||SEC[sec].t};
     try{localStorage.setItem('rmv-last-reading',JSON.stringify(ultimo));}catch(e){}
@@ -352,6 +503,6 @@ function entrar(cx,raiz){
     else{const capa=document.querySelector('#v-inicio .capa');if(capa)capa.insertAdjacentHTML('afterend',retomar());}
     const novo=document.getElementById('rv-retomar');if(novo)ligar(novo);
   }
-  return {versao:'2.0',aoAbrir};
+  return {versao:'2.3',aoAbrir};
 }
 })();

@@ -1,4 +1,4 @@
-/* Realmetaverso · Códice Vivo Ilustrado · folha de estilo da camada visual · versão 2.2 (25/11/2026)
+/* Realmetaverso · Códice Vivo Ilustrado · folha de estilo da camada visual · versão 2.3 (25/11/2026)
    ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X
 
    Ideia: iluminura de códice. A arte aparece onde um manuscrito a poria: uma prancha de abertura,
@@ -42,6 +42,10 @@
 .rv-quick .rv-primario:hover{background:var(--ouro2);border-color:var(--ouro2);color:var(--fundo)}
 .rv-resume{margin:16px 0 0;text-align:center;font-size:.92rem;color:var(--tinta2)}
 .rv-resume small{display:block;margin-top:2px;font-size:.78rem}
+.rv-resume+.rv-resume{margin-top:10px}
+/* o convite para instalar só aparece onde o aplicativo existe (classe app-on, posta por assets/aplicativo.js) */
+.rv-instalar{display:none}
+.app-on .rv-quick .rv-instalar{display:inline-block}
 
 /* ── percursos de leitura (cinco): selo da arte, título e três passos ── */
 .rv-percursos{margin:32px 0 0;scroll-margin-top:76px}
@@ -146,6 +150,28 @@
 .rv-acoes{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
 .rv-acoes .btn{text-decoration:none}
 
+/* ── Mesa das Mensagens: a folha do dia e o diário do blog, lidos na hora ── */
+.rv-mesa{max-width:880px}
+.rv-mesa-estado{min-height:34px;margin:0 0 16px;font-size:.86rem;color:var(--tinta2)}
+.rv-mesa-estado .rv-copiar{margin-left:6px}
+.rv-mesa-folha{padding:2px 0 4px 22px;border-left:3px solid var(--ouro)}
+.rv-mesa-rotulo{margin:0;font-size:.86rem;color:var(--tinta2)}
+.rv-mesa-folha h3{margin:8px 0 0;font-size:clamp(1.35rem,3.2vw,1.9rem);line-height:1.25;color:var(--ouro2);text-wrap:balance}
+.rv-mesa-gancho{max-width:62ch;margin:10px 0 0;font-size:1.06rem}
+.rv-mesa-acao{max-width:62ch;margin:14px 0 0}
+.rv-mesa-ancora{margin:16px 0 18px;padding:0;font-family:var(--f-display);font-size:1.15rem;line-height:1.4;color:var(--ciano)}
+.rv-mesa-folha p:last-child{margin:0}
+.rv-mesa-ler{display:inline-block;padding:9px 18px;background:var(--ouro);border-color:var(--ouro);color:var(--fundo);font-weight:700;text-decoration:none}
+.rv-mesa-ler:hover{background:var(--ouro2);border-color:var(--ouro2);color:var(--fundo)}
+.rv-mesa-diario{margin:32px 0 0;padding:16px 0 0;border-top:1px solid var(--linha2)}
+.rv-mesa-diario h3{font-size:1.1rem;color:var(--ouro2)}
+.rv-mesa-diario ul{list-style:none;margin:8px 0 12px;padding:0}
+.rv-mesa-diario li{display:grid;grid-template-columns:3.4em minmax(0,1fr);gap:0 12px;padding:10px 0;border-top:1px solid var(--linha2);font-size:.95rem}
+.rv-mesa-diario li:first-child{border-top:0}
+.rv-mesa-diario time{font-family:var(--f-display);font-size:.9rem;color:var(--ouro)}
+.rv-mesa-diario q{display:block;margin-top:2px;font-size:.9rem;color:var(--tinta2)}
+.rv-mesa-diario p{margin:0;font-size:.92rem}
+
 /* ── mapa vivo: foco visível pelo teclado ── */
 .mapa-svg .no:focus-visible,.mapa-svg .centro:focus-visible{outline:none}
 .mapa-svg .no:focus-visible .pt{stroke:var(--ciano);stroke-width:4}
@@ -164,7 +190,7 @@
   .rv-on .capa .brasao{width:70px;margin:10px auto 4px}
   .rv-on .capa h1{letter-spacing:.06em;padding-left:.06em}
   .rv-on .capa .sub{font-size:1rem}
-  .rv-quick .btn{flex:1 1 0;text-align:center;padding:11px 14px}
+  .rv-quick .btn{flex:1 1 40%;text-align:center;padding:11px 14px}
   .rv-quick .rv-primario{flex-basis:100%}
   .rv-trails{grid-template-columns:1fr}
   .rv-trail,.rv-trail+.rv-trail{display:grid;grid-template-columns:auto 1fr;gap:0 16px;padding:18px 0;border-left:0}
@@ -174,6 +200,7 @@
   .rv-pubs-grid,.rv-manifesto .values{grid-template-columns:1fr}
   .rv-friso{height:60px}
   .rv-copiar{padding:11px 0}
+  .rv-mesa-folha{padding-left:16px}
   .rv-outline ul{columns:1}
   .rv-lightbox{padding:10px}
   .lomb-nav a{min-height:44px}
@@ -181,7 +208,7 @@
 
 /* ── impressão ── */
 @media print{
-  .rv-skip,.rv-progress,.rv-quick,.rv-resume,.rv-barra,.rv-outline,.rv-lightbox,.rv-acoes,.rv-nav-sep{display:none!important}
+  .rv-skip,.rv-progress,.rv-quick,.rv-resume,.rv-barra,.rv-outline,.rv-lightbox,.rv-acoes,.rv-nav-sep,.rv-mesa-estado{display:none!important}
   .rv-frontis img,.rv-friso img,.rv-gallery img,.rv-manifesto figure img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .rv-gallery img{max-height:220px}
   .rv-linked,.rv-gallery figure,.rv-manifesto .values article{break-inside:avoid}
