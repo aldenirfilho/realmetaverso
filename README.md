@@ -6,6 +6,8 @@ Publicações abertas do Realmetaverso, universo de ficção, filosofia e worldb
 
 📖 **Códice Vivo ilustrado:** https://aldenirfilho.github.io/realmetaverso/codice/
 
+📲 **Aplicativo:** o site instala no celular e no computador e abre sem internet. Abra o [Códice Vivo](https://aldenirfilho.github.io/realmetaverso/codice/) e toque em **Instalar aplicativo**.
+
 ## 📚 Publicações
 
 | Edição | Data | Ato | Ler |
@@ -21,6 +23,22 @@ A pasta [`codice/`](codice/) traz o Códice Vivo inteiro: incisos, axiomas, leis
 
 - Os links com 🔒 abrem fichas do autor no Notion, no Drive ou em artefatos Claude: são privadas e pedem acesso.
 - A fonte do site, os testes e a auditoria ficam num repositório privado do autor; esta pasta recebe só os arquivos publicados.
+
+## 📲 Aplicativo e Mesa das Mensagens
+
+Desde 25/11/2026 o site é também um aplicativo: o Diário nº 019, a Concórdia e o Códice Vivo abrem da tela de início e continuam legíveis sem internet.
+
+| Aparelho | Como instalar |
+|---|---|
+| iPhone e iPad | No Safari: **Compartilhar** › **Adicionar à Tela de Início** |
+| Android | Botão **Instalar aplicativo** do site, ou menu **⋮** › **Instalar aplicativo** |
+| Computador (Chrome ou Edge) | Botão **Instalar aplicativo** do site, ou o ícone de instalar na barra de endereço |
+| Mac (Safari) | **Arquivo** › **Adicionar ao Dock** |
+
+- 🪑 A **Mesa das Mensagens**, em [`#mesa`](https://aldenirfilho.github.io/realmetaverso/codice/#mesa), lê do blog [Mensagens que Importam](https://aldenirfilho.github.io/biblia-sem-jaula-365/blog/) a folha do dia e as últimas mensagens.
+- Na raiz ficam [`manifest.webmanifest`](manifest.webmanifest) (a ficha do aplicativo) e [`sw.js`](sw.js) (a cópia para ler sem internet). O `sw.js` só responde por `/realmetaverso/` e só apaga cópias que ele mesmo criou: os outros sites do domínio não são tocados.
+- A cópia fica no aparelho de quem lê. Nada é enviado a ninguém.
+- Para desfazer, apague o aplicativo como qualquer outro. O modo de desligá-lo em todos os aparelhos está no repositório privado do autor.
 
 ## ⚜️ Créditos
 
