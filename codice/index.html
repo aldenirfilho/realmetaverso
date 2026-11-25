@@ -1813,7 +1813,7 @@ AFTER.revisao=v=>{
     const it=$$('[data-pd]',v).filter(c=>c.checked).map(c=>'- '+D.pend[+c.dataset.pd][0]+': '+D.pend[+c.dataset.pd][1]);
     const msg=$('#pd-msg',v),out=$('#copia-saida',v);
     if(!it.length){msg.textContent='Marque pelo menos uma pendência.';return;}
-    const txt='Aprovo para o Diário Oficial nº 023 do Realmetaverso:\n'+it.join('\n');
+    const txt='Aprovo para o Diário Oficial nº 024 do Realmetaverso:\n'+it.join('\n');
     out.value=txt;out.hidden=false;
     const ok=()=>{msg.textContent=it.length+' itens copiados.';},no=()=>{msg.textContent='Selecione o texto abaixo e copie.';out.focus();out.select();};
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(ok,no);else no();
