@@ -13,11 +13,11 @@ Publicações abertas do Realmetaverso, universo de ficção, filosofia e worldb
 | nº 020 | 25/11/2026 | Ato nº 50 · Da Concórdia das Tradições | [Página](https://aldenirfilho.github.io/realmetaverso/concordia/) · [PDF, 8 páginas](pdf/Diario_Oficial_Realmetaverso_n020_Ato_50_Da_Concordia_das_Tradicoes_2026-11-25_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
 | nº 019 | 23/11/2026 | Ato nº 49 · Do Oráculo Digital | [Página](https://aldenirfilho.github.io/realmetaverso/) · [PDF, 5 páginas](pdf/Diario_Oficial_Realmetaverso_n019_Ato_49_Do_Oraculo_Digital_2026-11-23_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
 
-As edições nº 001 a 018, com os Atos nº 1 a 48, estão no [Códice Vivo do Realmetaverso](https://aldenirfilho.github.io/realmetaverso/codice/), o acervo do autor, aberto a todos desde 23/11/2026.
+Todas as edições, da nº 001 à nº 020, com os Atos nº 1 a 50, estão no [Códice Vivo do Realmetaverso](https://aldenirfilho.github.io/realmetaverso/codice/), o acervo do autor, aberto a todos desde 23/11/2026.
 
 ## 📖 Códice Vivo ilustrado
 
-A pasta [`codice/`](codice/) traz o Códice Vivo inteiro: incisos, axiomas, leis, Diários Oficiais, política e sociedade, polêmicas, mapa vivo e a edição ilustrada com quatro artes originais.
+A pasta [`codice/`](codice/) traz o Códice Vivo inteiro: incisos, axiomas, leis, Diários Oficiais, política e sociedade, polêmicas, mapa vivo e a edição ilustrada com quatro artes originais. Atualizado em 25/11/2026 com o Diário nº 020: o Ato nº 50 está em [`#leis--lei-concordia`](https://aldenirfilho.github.io/realmetaverso/codice/#leis--lei-concordia).
 
 - Os links com 🔒 abrem fichas do autor no Notion, no Drive ou em artefatos Claude: são privadas e pedem acesso.
 - A fonte do site, os testes e a auditoria ficam num repositório privado do autor; esta pasta recebe só os arquivos publicados.
