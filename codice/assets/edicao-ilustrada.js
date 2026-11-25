@@ -47,6 +47,7 @@ function entrar(cx,raiz){
   const NOTION_MANIFESTO='https://app.notion.com/p/4214e3810a8281c38ea5cf7ab888436e';
   const SITE_DIARIO='https://aldenirfilho.github.io/realmetaverso/';
   const SITE_CONCORDIA='https://aldenirfilho.github.io/realmetaverso/concordia/';
+  const SITE_ORIGEM='https://aldenirfilho.github.io/realmetaverso/origem/';
   const SITE_MENSAGENS='https://aldenirfilho.github.io/biblia-sem-jaula-365/blog/';
 
   /* ───────── conteúdo desta camada ───────── */
@@ -163,10 +164,10 @@ function entrar(cx,raiz){
   }
   function publicacoes(onde){
     return '<aside class="rv-pubs" aria-labelledby="rv-pubs-'+onde+'"><h3 id="rv-pubs-'+onde+'">Publicações desta edição</h3><div class="rv-pubs-grid">'+
+      '<article><h4>Diário Oficial nº 021 · Ato nº 51</h4><p><b>Da Cidade-Origem.</b> Sobral, Ceará, Brasil, é o berço do Realmetaverso: a Luz de 1919, os Santuários, as Marcas e uma Aliança que não destrói.</p>'+
+        '<p class="rv-links">'+lk('leis','lei-origem','Ler a lei')+lk('diario','do-021','Ver no Diário')+fora(SITE_ORIGEM,'Página pública e PDF')+'</p></article>'+
       '<article><h4>Diário Oficial nº 020 · Ato nº 50</h4><p><b>Da Concórdia das Tradições.</b> O rótulo religioso não é a medida de ninguém: contam as atitudes e as ações. Todas as tradições são respeitadas, cada uma com o seu papel.</p>'+
         '<p class="rv-links">'+lk('leis','lei-concordia','Ler a lei')+lk('diario','do-020','Ver no Diário')+fora(SITE_CONCORDIA,'Página pública e PDF')+fora(SITE_MENSAGENS,'Mesa das Mensagens (blog)')+'</p></article>'+
-      '<article><h4>Diário Oficial nº 019 · Ato nº 49</h4><p><b>Do Oráculo Digital.</b> Aconselha, não governa: a IA como conselheira, com livre-arbítrio, prova e limites no mundo real.</p>'+
-        '<p class="rv-links">'+lk('leis','lei-oraculo','Ler a lei')+lk('diario','do-019','Ver no Diário')+fora(SITE_DIARIO,'Página pública e PDF')+'</p></article>'+
       '<article><h4>Manifesto RM-ET-001 · versão 1.3</h4><p><b>Amor com fé na humanidade.</b> Declaração de fé pessoal e carta de sugestões do autor: honra, amor, justiça, dignidade e oportunidade para todos.</p>'+
         '<p class="rv-links">'+lk('manifesto',null,'Ler o manifesto')+'<a class="rv-fora" href="publicacoes/manifesto.html">Página avulsa</a>'+
         '<a class="rv-fora" href="publicacoes/Manifesto_Amor_Fe_Humanidade_360X.pdf">PDF</a>'+fora(NOTION_MANIFESTO,'Registro no Notion (privado)')+'</p></article>'+
