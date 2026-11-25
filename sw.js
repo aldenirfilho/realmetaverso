@@ -5,7 +5,7 @@
    em aplicativo/sw.js, e os testes em tests/test_aplicativo.py.
 
    O que faz:
-   - guarda neste aparelho as três páginas do site, o código e as artes, para tudo abrir sem internet;
+   - guarda neste aparelho as quatro páginas do site, o código e as artes, para tudo abrir sem internet;
    - com internet, páginas e código vêm sempre do servidor; a cópia só entra se a rede falhar ou demorar;
    - imagens e fontes saem da cópia e se renovam por trás.
 
@@ -21,15 +21,15 @@
    aplicativo/desligar/sw.js (o README do repositório do Códice explica). */
 'use strict';
 
-const VERSAO = 'v1';               // troque para obrigar todos os aparelhos a refazer a cópia
+const VERSAO = 'v2';               // troque para obrigar todos os aparelhos a refazer a cópia
 const PREFIXO = 'realmetaverso-';
 const COPIA = PREFIXO + VERSAO;
 const RAIZ = new URL('./', self.location).href;
 const ESPERA = 3500;               // ms à espera do servidor antes de abrir a cópia, quando ela existe
 const FONTES_GOOGLE = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
-/* Sem estes o aplicativo não se instala: as três páginas e o código do Códice. */
-const ESSENCIAIS = ['./', 'concordia/', 'codice/', 'codice/assets/edicao-ilustrada.css', 'codice/assets/edicao-ilustrada.js',
+/* Sem estes o aplicativo não se instala: as quatro páginas (Diário nº 019, Concórdia, Cidade-Origem e Códice) e o código do Códice. */
+const ESSENCIAIS = ['./', 'concordia/', 'origem/', 'codice/', 'codice/assets/edicao-ilustrada.css', 'codice/assets/edicao-ilustrada.js',
   'codice/assets/aplicativo.js', 'manifest.webmanifest', 'codice/assets/app/icone-192.png'];
 
 /* Buscados depois, um a um, sem travar nada: as fontes das páginas do Diário, as artes do Códice no
@@ -44,7 +44,8 @@ const EXTRAS = ['assets/brasao-oraculo.svg',
   'codice/assets/hero-800.webp', 'codice/assets/hero-1200.webp', 'codice/assets/hero-friso.webp', 'codice/assets/hero-selo.webp',
   'codice/assets/genese-800.webp', 'codice/assets/genese-friso.webp', 'codice/assets/genese-selo.webp',
   'codice/assets/biblioteca-800.webp', 'codice/assets/biblioteca-friso.webp', 'codice/assets/biblioteca-selo.webp',
-  'codice/assets/ponte-800.webp', 'codice/assets/ponte-friso.webp', 'codice/assets/ponte-selo.webp'];
+  'codice/assets/ponte-800.webp', 'codice/assets/ponte-friso.webp', 'codice/assets/ponte-selo.webp',
+  'codice/assets/luz-800.webp', 'codice/assets/luz-friso.webp', 'codice/assets/luz-selo.webp'];
 
 const noSite = url => url.origin === self.location.origin && url.href.startsWith(RAIZ);
 const eFonte = url => FONTES_GOOGLE.includes(url.hostname);
@@ -130,9 +131,9 @@ function semConexao() {
     'a{color:#4fd8e8;text-underline-offset:3px}p{margin:.8em 0}.ir{display:inline-block;margin-right:14px;padding:9px 18px;border-radius:8px;background:#d9b25f;color:#0a0d16;font-weight:700;text-decoration:none}' +
     'button{font:inherit;color:inherit;background:#111727;border:1px solid rgba(217,178,95,.4);border-radius:8px;padding:8px 16px;cursor:pointer}' +
     'small{display:block;margin-top:3em;color:#aba795}</style></head><body><main><h1>Sem conexão</h1>' +
-    '<p>Esta página ainda não foi guardada neste aparelho. O Códice Vivo, o Diário nº 019 e a Concórdia das Tradições estão guardados e abrem sem internet.</p>' +
+    '<p>Esta página ainda não foi guardada neste aparelho. O Códice Vivo, o Diário nº 019, a Concórdia das Tradições e a Cidade-Origem estão guardados e abrem sem internet.</p>' +
     '<p><a class="ir" href="' + RAIZ + 'codice/">Abrir o Códice Vivo</a><button type="button" onclick="location.reload()">Tentar de novo</button></p>' +
-    '<p><a href="' + RAIZ + '">Diário nº 019 · Do Oráculo Digital</a><br><a href="' + RAIZ + 'concordia/">Diário nº 020 · Da Concórdia das Tradições</a></p>' +
+    '<p><a href="' + RAIZ + '">Diário nº 019 · Do Oráculo Digital</a><br><a href="' + RAIZ + 'concordia/">Diário nº 020 · Da Concórdia das Tradições</a><br><a href="' + RAIZ + 'origem/">Diário nº 021 · Da Cidade-Origem</a></p>' +
     '<small>Realmetaverso · Aldenir Rocha de Oliveira Filho · Projeto 360X</small></main></body></html>';
   return new Response(html, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
 }

@@ -65,6 +65,7 @@
 .rv-gallery{margin:46px 0 0;scroll-margin-top:76px}
 .rv-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 34px;margin:22px 6px 0}
 .rv-gallery figure{margin:0}
+.rv-gallery-grid figure:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 17px)}
 .rv-gallery button{display:block;width:100%;padding:0;cursor:zoom-in;background:var(--painel);border:1px solid var(--ouro);border-radius:3px;outline:1px solid var(--linha);outline-offset:5px;overflow:hidden}
 .rv-gallery button:focus-visible{outline:2px solid var(--ciano);outline-offset:5px}
 .rv-gallery img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
@@ -197,6 +198,7 @@
   .rv-trail+.rv-trail{border-top:1px solid var(--linha2)}
   .rv-selo{width:52px;height:52px;margin:5px 0 0 3px}
   .rv-gallery-grid{grid-template-columns:1fr;gap:30px}
+  .rv-gallery-grid figure:last-child:nth-child(odd){width:auto;justify-self:stretch}
   .rv-pubs-grid,.rv-manifesto .values{grid-template-columns:1fr}
   .rv-friso{height:60px}
   .rv-copiar{padding:11px 0}

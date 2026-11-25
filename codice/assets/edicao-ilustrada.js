@@ -14,7 +14,8 @@
    Como entra: o index.html chama window.CodiceIlustrado(contexto) uma vez, antes de abrir a primeira
    seção, e recebe de volta { aoAbrir(secao, trecho) }.
 
-   Artes: quatro ilustrações originais geradas com IA (ChatGPT, 23/11/2026), sem pessoas reais nem marcas.
+   Artes: quatro ilustrações originais geradas com IA (ChatGPT, 23/11/2026) e a prancha V (A Luz que Curvou),
+   vetorial, desenhada por Claude em 25/11/2026 (fonte em assets/luz-fonte.svg); sem pessoas reais nem marcas.
    Primeira edição ilustrada: ChatGPT. Revisão, auditoria e esta versão: Claude. */
 (function(){
 'use strict';
@@ -66,7 +67,10 @@ function entrar(cx,raiz){
      d:'Uma biblioteca imaginária para guardar leis, histórias e perguntas.'},
     {k:'ponte',n:'IV',t:'Amor com fé na humanidade',sec:'ponte',id:null,
      alt:'Ponte de pedra entre uma cidade antiga e um horizonte dourado; pequenos caminhantes a atravessam juntos.',
-     d:'A passagem simbólica entre a imaginação e a responsabilidade com a vida.'}
+     d:'A passagem simbólica entre a imaginação e a responsabilidade com a vida.'},
+    {k:'luz',n:'V',t:'A Luz que Curvou',sec:'leis',id:'lei-origem',
+     alt:'Eclipse total do Sol com a coroa dourada sobre uma pequena cidade com torre de igreja; um telescópio aponta para o Sol e linhas ciano pontilhadas mostram a luz das estrelas curvando ao passar perto dele.',
+     d:'29 de maio de 1919: a luz das estrelas curva perto do Sol, e a Cidade-Origem ganha o seu Dia da Luz.'}
   ];
   const PERCURSOS=[
     {t:'Conhecer este universo',a:'genese',d:'Da origem dos mundos às histórias que os habitam.',
@@ -84,11 +88,11 @@ function entrar(cx,raiz){
      o ornamento entre seções que usam a mesma arte; as artes não têm texto. */
   const FRISO={
     genese:['genese','50%'],fundamentos:['genese','8%',1],axiomas:['genese','94%'],manifesto:['genese','30%',1],mesa:['ponte','18%',1],
-    incisos:['biblioteca','4%'],codice:['biblioteca','96%'],leis:['biblioteca','38%',1],diario:['biblioteca','70%'],glossario:['biblioteca','20%',1],acervo:['biblioteca','86%',1],
+    incisos:['biblioteca','4%'],codice:['biblioteca','96%'],leis:['biblioteca','38%',1],diario:['luz','50%'],glossario:['biblioteca','20%',1],acervo:['biblioteca','86%',1],
     sociedade:['hero','22%'],saga:['hero','78%',1],caderno:['hero','2%',1],empresas:['hero','52%'],
     paradoxos:['ponte','88%'],polemicas:['ponte','66%',1],revisao:['ponte','100%',1],ponte:['ponte','40%']
   };
-  const CREDITO='<p class="rv-credito">Edição ilustrada: quatro artes originais geradas com IA (ChatGPT, 23/11/2026), sem pessoas reais nem marcas. Camada visual revista e auditada por Claude em 23/11/2026. ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X.</p>';
+  const CREDITO='<p class="rv-credito">Edição ilustrada: quatro artes originais geradas com IA (ChatGPT, 23/11/2026) e a prancha V, vetorial, desenhada por Claude (25/11/2026), sem pessoas reais nem marcas. Camada visual revista e auditada por Claude em 23/11/2026. ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X.</p>';
 
   /* ───────── utilitários ───────── */
   const arq=(k,s)=>'assets/'+k+'-'+s+'.webp';
@@ -159,7 +163,7 @@ function entrar(cx,raiz){
       '</div></section>';
   }
   function galeria(){
-    return '<section class="rv-gallery" id="rv-galeria" aria-labelledby="rv-galeria-t"><h2 id="rv-galeria-t">Quatro janelas para o Realmetaverso</h2>'+
+    return '<section class="rv-gallery" id="rv-galeria" aria-labelledby="rv-galeria-t"><h2 id="rv-galeria-t">Cinco janelas para o Realmetaverso</h2>'+
       '<p class="rv-lede">Artes originais geradas com IA para esta edição. Toque numa prancha para ampliar e siga para o capítulo ligado a ela.</p><div class="rv-gallery-grid">'+
       ARTES.map(a=>'<figure><button type="button" data-rv-art="'+a.k+'" aria-label="Ampliar a prancha '+a.n+': '+esc(a.t)+'">'+imagem(a.k,'800',a.alt,800,450)+'</button>'+
         '<figcaption><h3><span class="rv-num">'+a.n+'</span>'+a.t+'</h3><p>'+a.d+'</p>'+lk(a.sec,a.id,'Ler '+SEC[a.sec].t)+'</figcaption></figure>').join('')+
@@ -167,13 +171,12 @@ function entrar(cx,raiz){
   }
   function publicacoes(onde){
     return '<aside class="rv-pubs" aria-labelledby="rv-pubs-'+onde+'"><h3 id="rv-pubs-'+onde+'">Publicações desta edição</h3><div class="rv-pubs-grid">'+
+      '<article><h4>Diário Oficial nº 026 · Ato nº 56</h4><p><b>Da Rede da Cura.</b> A saúde de Sobral no reino: Estado, Município, Misericórdia e Academia numa só corrente, com o Hospital Dom Walfrido na pandemia.</p>'+
+        '<p class="rv-links">'+lk('leis','lei-rede','Ler a lei')+lk('diario','do-026','Ver no Diário')+'</p></article>'+
       '<article><h4>Diário Oficial nº 021 · Ato nº 51</h4><p><b>Da Cidade-Origem.</b> Sobral, Ceará, Brasil, é o berço do Realmetaverso: a Luz de 1919, os Santuários, as Marcas e uma Aliança que não destrói.</p>'+
         '<p class="rv-links">'+lk('leis','lei-origem','Ler a lei')+lk('diario','do-021','Ver no Diário')+fora(SITE_ORIGEM,'Página pública e PDF')+'</p></article>'+
       '<article><h4>Diário Oficial nº 020 · Ato nº 50</h4><p><b>Da Concórdia das Tradições.</b> O rótulo religioso não é a medida de ninguém: contam as atitudes e as ações. Todas as tradições são respeitadas, cada uma com o seu papel.</p>'+
         '<p class="rv-links">'+lk('leis','lei-concordia','Ler a lei')+lk('diario','do-020','Ver no Diário')+fora(SITE_CONCORDIA,'Página pública e PDF')+fora(SITE_MENSAGENS,'Mesa das Mensagens (blog)')+'</p></article>'+
-      '<article><h4>Manifesto RM-ET-001 · versão 1.3</h4><p><b>Amor com fé na humanidade.</b> Declaração de fé pessoal e carta de sugestões do autor: honra, amor, justiça, dignidade e oportunidade para todos.</p>'+
-        '<p class="rv-links">'+lk('manifesto',null,'Ler o manifesto')+'<a class="rv-fora" href="publicacoes/manifesto.html">Página avulsa</a>'+
-        '<a class="rv-fora" href="publicacoes/Manifesto_Amor_Fe_Humanidade_360X.pdf">PDF</a>'+fora(NOTION_MANIFESTO,'Registro no Notion (privado)')+'</p></article>'+
       '</div></aside>';
   }
   const inicioBase=R.inicio;
