@@ -12,6 +12,7 @@ Publicações abertas do Realmetaverso, universo de ficção, filosofia e worldb
 
 | Edição | Data | Ato | Ler |
 |---|---|---|---|
+| nº 027 | 25/11/2026 | Ato nº 57 · Da Ordem da Cúpula da Nova Era | [No Códice Vivo](https://aldenirfilho.github.io/realmetaverso/codice/#diario--do-027) |
 | nº 026 | 25/11/2026 | Ato nº 56 · Da Rede da Cura | [No Códice Vivo](https://aldenirfilho.github.io/realmetaverso/codice/#leis--lei-rede) |
 | nº 025 | 25/11/2026 | Ato nº 55 · Das Olimpíadas Mágicas | [Ordens da Arena e do Traje](https://aldenirfilho.github.io/realmetaverso/ordens/#ato55) |
 | nº 024 | 25/11/2026 | Ato nº 54 · Das Ordens da Arena e do Traje | [Ordens da Arena e do Traje](https://aldenirfilho.github.io/realmetaverso/ordens/): 12 casas com brasões originais |
@@ -21,7 +22,7 @@ Publicações abertas do Realmetaverso, universo de ficção, filosofia e worldb
 | nº 020 | 25/11/2026 | Ato nº 50 · Da Concórdia das Tradições | [Página](https://aldenirfilho.github.io/realmetaverso/concordia/) · [PDF, 8 páginas](pdf/Diario_Oficial_Realmetaverso_n020_Ato_50_Da_Concordia_das_Tradicoes_2026-11-25_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
 | nº 019 | 23/11/2026 | Ato nº 49 · Do Oráculo Digital | [Página](https://aldenirfilho.github.io/realmetaverso/) · [PDF, 5 páginas](pdf/Diario_Oficial_Realmetaverso_n019_Ato_49_Do_Oraculo_Digital_2026-11-23_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
 
-Todas as edições, da nº 001 à nº 026, com os Atos nº 1 a 56, estão no [Códice Vivo do Realmetaverso](https://aldenirfilho.github.io/realmetaverso/codice/), o acervo do autor, aberto a todos desde 23/11/2026. As nº 023 a 025 têm páginas próprias: [Junta das Guildas](https://aldenirfilho.github.io/realmetaverso/guildas/) e [Ordens da Arena e do Traje](https://aldenirfilho.github.io/realmetaverso/ordens/).
+Todas as edições, da nº 001 à nº 027, com os Atos nº 1 a 57, estão no [Códice Vivo do Realmetaverso](https://aldenirfilho.github.io/realmetaverso/codice/), o acervo do autor, aberto a todos desde 23/11/2026. As nº 023 a 025 têm páginas próprias: [Junta das Guildas](https://aldenirfilho.github.io/realmetaverso/guildas/) e [Ordens da Arena e do Traje](https://aldenirfilho.github.io/realmetaverso/ordens/).
 
 ## 📖 Códice Vivo ilustrado
 
