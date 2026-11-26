@@ -171,8 +171,8 @@ function entrar(cx,raiz){
   }
   function publicacoes(onde){
     return '<aside class="rv-pubs" aria-labelledby="rv-pubs-'+onde+'"><h3 id="rv-pubs-'+onde+'">Publicações desta edição</h3><div class="rv-pubs-grid">'+
-      '<article><h4>Diário Oficial nº 026 · Ato nº 56</h4><p><b>Da Rede da Cura.</b> A saúde de Sobral no reino: Estado, Município, Misericórdia e Academia numa só corrente, com o Hospital Dom Walfrido na pandemia.</p>'+
-        '<p class="rv-links">'+lk('leis','lei-rede','Ler a lei')+lk('diario','do-026','Ver no Diário')+'</p></article>'+
+      '<article><h4>Diário Oficial nº 028 · Ato nº 58</h4><p><b>Da Carta das Cláusulas Pétreas.</b> Treze princípios que nenhuma lei futura pode contrariar, e cinco regras que os guardam. Com a Apostila nº 1 ao Ato nº 56, a Rede da Cura fica completa.</p>'+
+        '<p class="rv-links">'+lk('leis','carta-petreas','Ler a Carta')+lk('diario','do-028','Ver no Diário')+lk('leis','lei-rede','Rede da Cura')+'</p></article>'+
       '<article><h4>Diário Oficial nº 021 · Ato nº 51</h4><p><b>Da Cidade-Origem.</b> Sobral, Ceará, Brasil, é o berço do Realmetaverso: a Luz de 1919, os Santuários, as Marcas e uma Aliança que não destrói.</p>'+
         '<p class="rv-links">'+lk('leis','lei-origem','Ler a lei')+lk('diario','do-021','Ver no Diário')+fora(SITE_ORIGEM,'Página pública e PDF')+'</p></article>'+
       '<article><h4>Diário Oficial nº 020 · Ato nº 50</h4><p><b>Da Concórdia das Tradições.</b> O rótulo religioso não é a medida de ninguém: contam as atitudes e as ações. Todas as tradições são respeitadas, cada uma com o seu papel.</p>'+

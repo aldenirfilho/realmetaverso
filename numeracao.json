@@ -3,8 +3,8 @@
  "autor": "ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X",
  "regra": "Ver NUMERACAO.md. Antes de redigir uma edição nova, reserve aqui o número e faça push na hora.",
  "ultima_publicada": {
-  "edicao": "027",
-  "ato": 57
+  "edicao": "028",
+  "ato": 58
  },
  "edicoes": [
   {
@@ -95,9 +95,10 @@
    ],
    "titulo": "Da Carta das Cláusulas Pétreas",
    "onde": "codice/#diario--do-028",
-   "estado": "reservada",
-   "reservada_em": "2026-11-26",
-   "por": "sessão do Códice Vivo (Claude)"
+   "estado": "publicada",
+   "apostilas": [
+    "Apostila nº 1 ao Ato nº 56"
+   ]
   }
  ],
  "nota": "As edições nº 001 a 018 e a Edição Extra estão no Códice Vivo (codice/#diario)."
