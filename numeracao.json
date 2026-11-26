@@ -1,0 +1,104 @@
+{
+ "titulo": "Registro de numeração do Diário Oficial do Realmetaverso",
+ "autor": "ALDENIR ROCHA DE OLIVEIRA FILHO · PROJETO 360X",
+ "regra": "Ver NUMERACAO.md. Antes de redigir uma edição nova, reserve aqui o número e faça push na hora.",
+ "ultima_publicada": {
+  "edicao": "027",
+  "ato": 57
+ },
+ "edicoes": [
+  {
+   "edicao": "019",
+   "atos": [
+    49
+   ],
+   "titulo": "Do Oráculo Digital",
+   "onde": "./",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "020",
+   "atos": [
+    50
+   ],
+   "titulo": "Da Concórdia das Tradições",
+   "onde": "concordia/",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "021",
+   "atos": [
+    51
+   ],
+   "titulo": "Da Cidade-Origem",
+   "onde": "origem/",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "022",
+   "atos": [
+    52
+   ],
+   "titulo": "Da Ratificação da Cidade-Origem",
+   "onde": "codice/#diario--do-022",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "023",
+   "atos": [
+    53
+   ],
+   "titulo": "Das Guildas Empresariais",
+   "onde": "guildas/",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "024",
+   "atos": [
+    54
+   ],
+   "titulo": "Das Ordens da Arena e do Traje",
+   "onde": "ordens/",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "025",
+   "atos": [
+    55
+   ],
+   "titulo": "Das Olimpíadas Mágicas",
+   "onde": "ordens/#ato55",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "026",
+   "atos": [
+    56
+   ],
+   "titulo": "Da Rede da Cura",
+   "onde": "codice/#diario--do-026",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "027",
+   "atos": [
+    57
+   ],
+   "titulo": "Da Ordem da Cúpula da Nova Era",
+   "onde": "codice/#diario--do-027",
+   "estado": "publicada"
+  },
+  {
+   "edicao": "028",
+   "atos": [
+    58
+   ],
+   "titulo": "Da Carta das Cláusulas Pétreas",
+   "onde": "codice/#diario--do-028",
+   "estado": "reservada",
+   "reservada_em": "2026-11-26",
+   "por": "sessão do Códice Vivo (Claude)"
+  }
+ ],
+ "nota": "As edições nº 001 a 018 e a Edição Extra estão no Códice Vivo (codice/#diario)."
+}
