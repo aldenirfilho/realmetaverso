@@ -17,7 +17,7 @@ Publicações abertas do Realmetaverso, universo de ficção, filosofia e worldb
 | nº 026 | 25/11/2026 | Ato nº 56 · Da Rede da Cura | [No Códice Vivo](https://aldenirfilho.github.io/realmetaverso/codice/#leis--lei-rede) |
 | nº 025 | 25/11/2026 | Ato nº 55 · Das Olimpíadas Mágicas | [Ordens da Arena e do Traje](https://aldenirfilho.github.io/realmetaverso/ordens/#ato55) |
 | nº 024 | 25/11/2026 | Ato nº 54 · Das Ordens da Arena e do Traje | [Ordens da Arena e do Traje](https://aldenirfilho.github.io/realmetaverso/ordens/): 12 casas com brasões originais |
-| nº 023 | 25/11/2026 | Ato nº 53 · Das Guildas Empresariais | [Junta das Guildas](https://aldenirfilho.github.io/realmetaverso/guildas/): registro funcional das 43 guildas, com simulador (Apostila nº 1: JBL) |
+| nº 023 | 25/11/2026 | Ato nº 53 · Das Guildas Empresariais | [Junta das Guildas](https://aldenirfilho.github.io/realmetaverso/guildas/): registro funcional das 52 guildas, com simulador (Apostilas nº 1 e nº 2) |
 | nº 022 | 25/11/2026 | Ato nº 52 · Da Ratificação da Cidade-Origem | [No Códice Vivo](https://aldenirfilho.github.io/realmetaverso/codice/#diario--do-022) |
 | nº 021 | 25/11/2026 | Ato nº 51 · Da Cidade-Origem | [Página](https://aldenirfilho.github.io/realmetaverso/origem/) · [PDF, 17 páginas](pdf/Diario_Oficial_Realmetaverso_n021_Ato_51_Da_Cidade_Origem_2026-11-25_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
 | nº 020 | 25/11/2026 | Ato nº 50 · Da Concórdia das Tradições | [Página](https://aldenirfilho.github.io/realmetaverso/concordia/) · [PDF, 8 páginas](pdf/Diario_Oficial_Realmetaverso_n020_Ato_50_Da_Concordia_das_Tradicoes_2026-11-25_Aldenir_Rocha_de_Oliveira_Filho_Projeto_360X.pdf) |
